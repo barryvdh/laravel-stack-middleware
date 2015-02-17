@@ -21,19 +21,21 @@ The kernel will be the first argument.
 
 You can access the Wrapper under the `stack` key in the Container, or with the Facade (`Barryvdh\StackMiddleware\Facade`). It can also be typehinted directly.
 
-    // Wrap and bind
-    $stack = App::make('stack');
-    $middleware = $stack->wrap(function($kernel){
-			return new \League\StackRobots\Robots($kernel);
-		});
-    App::instance('League\StackRobots\RobotsMiddleware', $middleware);
+```php
+// Wrap and bind
+$stack = App::make('stack');
+$middleware = $stack->wrap(function ($kernel) {
+    return new \League\StackRobots\Robots($kernel);
+});
+App::instance('League\StackRobots\RobotsMiddleware', $middleware);
 
-    // Or directly
-    app('stack')->bind('League\StackRobots\RobotsMiddleware', function($kernel){
-			return new \League\StackRobots\Robots($kernel);
-		});
-        
+// Or directly
+app('stack')->bind('League\StackRobots\RobotsMiddleware', function ($kernel) {
+    return new \League\StackRobots\Robots($kernel);
+});
+```
+
 This will bind the new Laravel compatible middleware as `League\StackRobots\RobotsMiddleware` so you can use it in your Kernel.
-    
+
 ### More information
-For more information, read the [StackPHP website](http://stackphp.com/)
+For more information, read the [StackPHP website](http://stackphp.com/).
