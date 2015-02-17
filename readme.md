@@ -25,21 +25,27 @@ You can access the Wrapper under the `stack` key in the Container, or with the F
 // Wrap and bind
 $stack = App::make('stack');
 $middleware = $stack->wrap(function ($kernel) {
-    return new \League\StackRobots\Robots($kernel);
+    return new \League\StackRobots\Robots($kernel, 'production', 'APP_ENV');
 });
-App::instance('League\StackRobots\RobotsMiddleware', $middleware);
+App::instance('AddRobotsHeaders', $middleware);
 
-// Or directly
-app('stack')->bind('League\StackRobots\RobotsMiddleware', function ($kernel) {
-    return new \League\StackRobots\Robots($kernel);
+// Or directly bind it
+app('stack')->bind('AddRobotsHeaders', function ($kernel) {
+    return new \League\StackRobots\Robots($kernel, 'production', 'APP_ENV');
 });
 ```
 
-This will bind the new Laravel compatible middleware as `League\StackRobots\RobotsMiddleware` so you can use it in your Kernel.
+You can also use a string to let the Laravel Container resolve the class, including extra parameters.
+The Kernel is prepended by the wrapper automatically.
+
+    app('stack')->bind('AddRobots', 'League\StackRobots\Robots', ['production', 'APP_ENV']);
+
+This will bind the new Laravel compatible middleware as `AddRobotsHeaders` so you can use it in your Kernel.
 
 ### Examples & Implementations
 
- - HttpCache: https://github.com/barryvdh/laravel-httpcache
+ - [StackRobots](https://github.com/thephpleague/stack-robots): Just require and use examples from above.
+ - [HttpCache](http://symfony.com/doc/current/book/http_cache.html): https://github.com/barryvdh/laravel-httpcache
 
 ### More information
 For more information, read the [StackPHP website](http://stackphp.com/).
