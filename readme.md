@@ -37,5 +37,9 @@ app('stack')->bind('League\StackRobots\RobotsMiddleware', function ($kernel) {
 
 This will bind the new Laravel compatible middleware as `League\StackRobots\RobotsMiddleware` so you can use it in your Kernel.
 
+### Examples & Implementations
+
+ - HttpCache: https://github.com/barryvdh/laravel-httpcache
+
 ### More information
 For more information, read the [StackPHP website](http://stackphp.com/).
