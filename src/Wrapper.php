@@ -19,10 +19,10 @@ class Wrapper
     /**
      * Wrap and register the middleware in the Container
      *
-     * @param  $abstract
-     * @param  Closure $callable
+     * @param  string         $abstract
+     * @param  Closure|string $callable
      */
-    public function bind($abstract, Closure $callable)
+    public function bind($abstract, $callable)
     {
         $this->container->bind($abstract, function() use($callable) {
             return $this->wrap($callable);
@@ -32,13 +32,18 @@ class Wrapper
     /**
      * Wrap the StackPHP Middleware in a Laravel Middleware
      *
-     * @param  Closure $callable
+     * @param  Closure|string  $callable
      * @return ClosureMiddleware
      */
-    public function wrap(Closure $callable)
+    public function wrap($callable)
     {
         $kernel = new ClosureHttpKernel();
-        $middleware = $callable($kernel);
+
+        if (is_callable($callable)) {
+            $middleware = $callable($kernel);
+        } else {
+            $middleware = new $callable($kernel)
+        }
 
         return new ClosureMiddleware($kernel, $middleware);
     }
