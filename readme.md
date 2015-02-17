@@ -38,7 +38,9 @@ app('stack')->bind('AddRobotsHeaders', function ($kernel) {
 You can also use a string to let the Laravel Container resolve the class, including extra parameters.
 The Kernel is prepended by the wrapper automatically.
 
-    app('stack')->bind('AddRobots', 'League\StackRobots\Robots', ['production', 'APP_ENV']);
+```php
+app('stack')->bind('AddRobotsHeaders', 'League\StackRobots\Robots', ['production', 'APP_ENV']);
+```
 
 This will bind the new Laravel compatible middleware as `AddRobotsHeaders` so you can use it in your Kernel.
 
