@@ -1,0 +1,27 @@
+{
+    "name": "barryvdh/laravel-stack-middleware",
+    "description": "Stack Middleware for Laravel 5",
+    "license": "MIT",
+    "keywords": ["laravel", "stack", "stackphp", "middleware"],
+    "authors": [
+        {
+            "name": "Barry vd. Heuvel",
+            "email": "barryvdh@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.0.x",
+        "symfony/http-kernel": "~2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Barryvdh\\StackMiddleware\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
