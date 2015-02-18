@@ -2,6 +2,7 @@
 
 use Closure;
 use Illuminate\Contracts\Container\Container;
+use Symfony\Component\HttpKernel\TerminableInterface;
 
 class StackMiddleware
 {
@@ -47,6 +48,10 @@ class StackMiddleware
             // Add kernel as first parameter
             array_unshift($params, $kernel);
             $middleware = $this->container->make($callable, $params);
+        }
+        
+        if ($middleware instanceof TerminableInterface) {
+            return new TerminableClosureMiddleware($kernel, $middleware);
         }
 
         return new ClosureMiddleware($kernel, $middleware);
