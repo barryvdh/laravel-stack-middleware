@@ -7,7 +7,7 @@ This package provides a way to wrap StackPHP Middleware so it can be used with L
 
 First, require this package in composer.json and run `composer update`
 
-    "barryvdh/laravel-stack-middleware": "0.1.x@dev"
+    "barryvdh/laravel-stack-middleware": "0.2.x@dev"
 
 After updating, add the ServiceProvider to the array of providers in config/app.php
 
@@ -15,34 +15,36 @@ After updating, add the ServiceProvider to the array of providers in config/app.
 
 ### Usage
 
-A Stack Middleware usually needs a Kernel. We can't use the real Kernel, so this package provides a one.
-When you use the `wrap` or `bind` method on the `Barryvdh\StackMiddleware\Wrapper`, you can provide a closure.
-The kernel will be the first argument.
+A Stack Middleware usually needs a Kernel. We can't use the real Kernel, so this package provides a one. 
+You can use the `bind` method to wrap a Stack (HttpKernelInterface) middleware and register it in the App container.
+You can access the StackMiddleware class under the `stack` key in the Container, or with the Facade (`Barryvdh\StackMiddleware\Facade`). It can also be typehinted directly, eg. on the `boot()` method of a ServiceProvider.
 
-You can access the Wrapper under the `stack` key in the Container, or with the Facade (`Barryvdh\StackMiddleware\Facade`). It can also be typehinted directly.
-
-```php
-// Wrap and bind
-$stack = App::make('stack');
-$middleware = $stack->wrap(function ($kernel) {
-    return new \League\StackRobots\Robots($kernel, 'production', 'APP_ENV');
-});
-App::instance('AddRobotsHeaders', $middleware);
-
-// Or directly bind it
-app('stack')->bind('AddRobotsHeaders', function ($kernel) {
-    return new \League\StackRobots\Robots($kernel, 'production', 'APP_ENV');
-});
-```
-
-You can also use a string to let the Laravel Container resolve the class, including extra parameters.
-The Kernel is prepended by the wrapper automatically.
+The first argument is the new Middleware name. The second is either:
+ - A closure, which gets the new Kernel as first parameter.
+ - The name of the class to resolve with the App container. Parameters can be provided as an array as the third argument. The Kernel is prepended to that array, so it's always injected as first argument.
 
 ```php
 app('stack')->bind('AddRobotsHeaders', 'League\StackRobots\Robots', ['production', 'APP_ENV']);
 ```
 
-This will bind the new Laravel compatible middleware as `AddRobotsHeaders` so you can use it in your Kernel.
+```php
+use League\StackRobots\Robots;
+use Barryvdh\StackMiddleware\StackMiddleware;
+
+public function boot(StackMiddleware $stack) {
+    $stack->bind('AddRobotsHeaders', function($kernel) {
+        return new Robots($kernel, 'production', 'APP_ENV');
+    });
+}
+```  
+
+Both examples have the same result, you can now add `AddRobotsHeaders` to the $middleware list in Kernel.php
+
+If you want to use the Facade, you can add that to your config/app.php. You can then use `Stack::bind(...)` instead.
+
+```php
+    'Stack' => 'Barryvdh\StackMiddleware\Facade',
+``` 
 
 ### Examples & Implementations
 

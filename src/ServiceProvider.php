@@ -12,10 +12,10 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->app->bind('stack', function(){
-            return new Wrapper($this->app);
+            return new StackMiddleware($this->app);
         });
 
-        $this->app->alias('stack', 'Barryvdh\StackMiddleware\Wrapper');
+        $this->app->alias('stack', 'Barryvdh\StackMiddleware\StackMiddleware');
     }
 
 }

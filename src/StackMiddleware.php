@@ -3,7 +3,7 @@
 use Closure;
 use Illuminate\Contracts\Container\Container;
 
-class Wrapper
+class StackMiddleware
 {
     /** @var Container $container */
     protected $container;
