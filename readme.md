@@ -1,6 +1,6 @@
 ## Stack Middleware for Laravel 5
 
-> Note: This package is still very alpha!
+> Note: This package is still very alpha! Read [this blogpost](http://barryvdh.nl/laravel/2015/02/18/using-stackphp-middleware-in-laravel-5/) for more information
 
 Laravel 4 used [HttpKernelInterface Middlewares](http://stackphp.com/middlewares/) for its Middleware, but Laravel 5 uses a new way.
 This package provides a way to wrap StackPHP Middleware so it can be used with Laravel 5
