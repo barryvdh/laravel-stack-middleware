@@ -53,3 +53,6 @@ If you want to use the Facade, you can add that to your config/app.php. You can 
 
 ### More information
 For more information, read the [StackPHP website](http://stackphp.com/).
+
+### License
+[MIT](LICENSE)
