@@ -14,9 +14,17 @@
         "illuminate/support": "5.0.x",
         "symfony/http-kernel": "~2.6"
     },
+    "require-dev": {
+        "phpunit/phpunit": "~4.5"
+    },
     "autoload": {
         "psr-4": {
             "Barryvdh\\StackMiddleware\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Barryvdh\\StackMiddleware\\Tests\\": "tests"
         }
     },
     "extra": {

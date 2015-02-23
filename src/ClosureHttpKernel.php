@@ -1,18 +1,17 @@
 <?php namespace Barryvdh\StackMiddleware;
 
-use Closure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class ClosureHttpKernel implements HttpKernelInterface
 {
-    /** @var Closure $closure */
+    /** @var callable $closure */
     protected $closure;
 
     /**
-     * @param Closure $closure
+     * @param callable $closure
      */
-    public function setClosure(Closure $closure)
+    public function setClosure(callable $closure)
     {
         $this->closure = $closure;
     }
@@ -27,6 +26,7 @@ class ClosureHttpKernel implements HttpKernelInterface
     public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
     {
         $closure = $this->closure;
+
         return $closure($request);
     }
 }

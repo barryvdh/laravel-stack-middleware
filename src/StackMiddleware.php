@@ -1,6 +1,5 @@
 <?php namespace Barryvdh\StackMiddleware;
 
-use Closure;
 use Illuminate\Contracts\Container\Container;
 use Symfony\Component\HttpKernel\TerminableInterface;
 
@@ -18,11 +17,11 @@ class StackMiddleware
     }
 
     /**
-     * Wrap and register the middleware in the Container
+     * Wrap and register the middleware in the Container.
      *
-     * @param  string         $abstract
-     * @param  array          $params
-     * @param  Closure|string $callable
+     * @param  string          $abstract
+     * @param  callable|string $callable
+     * @param  array           $params
      */
     public function bind($abstract, $callable, $params = [])
     {
@@ -32,10 +31,11 @@ class StackMiddleware
     }
 
     /**
-     * Wrap the StackPHP Middleware in a Laravel Middleware
+     * Wrap the StackPHP Middleware in a Laravel Middleware.
      *
-     * @param  Closure|string  $callable
+     * @param  callable|string $callable
      * @param  array           $params
+     *
      * @return ClosureMiddleware
      */
     public function wrap($callable, $params = [])
@@ -49,7 +49,7 @@ class StackMiddleware
             array_unshift($params, $kernel);
             $middleware = $this->container->make($callable, $params);
         }
-        
+
         if ($middleware instanceof TerminableInterface) {
             return new TerminableClosureMiddleware($kernel, $middleware);
         }
