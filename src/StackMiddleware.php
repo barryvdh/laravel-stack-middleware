@@ -25,7 +25,7 @@ class StackMiddleware
      */
     public function bind($abstract, $callable, $params = [])
     {
-        $this->container->bind($abstract, function() use($callable, $params) {
+        $this->container->bind($abstract, function () use ($callable, $params) {
             return $this->wrap($callable, $params);
         });
     }
