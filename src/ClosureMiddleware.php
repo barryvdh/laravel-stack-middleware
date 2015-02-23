@@ -9,10 +9,15 @@ class ClosureMiddleware implements MiddlewareInterface
     /** @var ClosureHttpKernel $kernel */
     protected $kernel;
 
-    /** @var HttpKernelInterface $middleware  */
+    /** @var HttpKernelInterface $middleware */
     protected $middleware;
 
-    public function __construct(ClosureHttpKernel $kernel, HttpKernelInterface $middleware){
+    /**
+     * @param  ClosureHttpKernel   $kernel
+     * @param  HttpKernelInterface $middleware
+     */
+    public function __construct(ClosureHttpKernel $kernel, HttpKernelInterface $middleware)
+    {
         $this->kernel = $kernel;
         $this->middleware = $middleware;
     }
@@ -20,8 +25,9 @@ class ClosureMiddleware implements MiddlewareInterface
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  Closure                  $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)

@@ -11,11 +11,10 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->app->bind('stack', function(){
+        $this->app->bind('stack', function () {
             return new StackMiddleware($this->app);
         });
 
         $this->app->alias('stack', 'Barryvdh\StackMiddleware\StackMiddleware');
     }
-
 }
