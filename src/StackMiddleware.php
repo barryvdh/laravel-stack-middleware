@@ -26,7 +26,7 @@ class StackMiddleware
      */
     public function bind($abstract, $callable, $params = [])
     {
-        $this->container->bind($abstract, function() use($callable, $params) {
+        $this->container->bind($abstract, function () use ($callable, $params) {
             return $this->wrap($callable, $params);
         });
     }
@@ -49,7 +49,7 @@ class StackMiddleware
             array_unshift($params, $kernel);
             $middleware = $this->container->make($callable, $params);
         }
-        
+
         if ($middleware instanceof TerminableInterface) {
             return new TerminableClosureMiddleware($kernel, $middleware);
         }
