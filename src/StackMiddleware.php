@@ -21,8 +21,8 @@ class StackMiddleware
      * Wrap and register the middleware in the Container
      *
      * @param  string         $abstract
-     * @param  array          $params
      * @param  Closure|string $callable
+     * @param  array          $params
      */
     public function bind($abstract, $callable, $params = [])
     {
