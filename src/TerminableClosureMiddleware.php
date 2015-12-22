@@ -1,8 +1,6 @@
 <?php namespace Barryvdh\StackMiddleware;
 
-use Illuminate\Contracts\Routing\TerminableMiddleware;
-
-class TerminableClosureMiddleware extends ClosureMiddleware implements TerminableMiddleware
+class TerminableClosureMiddleware extends ClosureMiddleware
 {
     /**
      * Perform any final actions for the request lifecycle.
