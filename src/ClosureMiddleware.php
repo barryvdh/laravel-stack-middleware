@@ -2,9 +2,8 @@
 
 use Closure;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Illuminate\Contracts\Routing\Middleware as MiddlewareInterface;
 
-class ClosureMiddleware implements MiddlewareInterface
+class ClosureMiddleware
 {
     /** @var ClosureHttpKernel $kernel */
     protected $kernel;
