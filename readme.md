@@ -5,13 +5,13 @@
 Laravel 4 used [HttpKernelInterface Middlewares](http://stackphp.com/middlewares/) for its Middleware, but Laravel 5 uses a new way.
 This package provides a way to wrap StackPHP Middleware so it can be used with Laravel 5
 
-First, require this package in composer.json and run `composer update`
+First, require this package in your composer file
 
-    "barryvdh/laravel-stack-middleware": "0.2.x@dev"
+    composer require barryvdh/laravel-stack-middleware
 
 After updating, add the ServiceProvider to the array of providers in config/app.php
 
-    'Barryvdh\StackMiddleware\ServiceProvider',
+    Barryvdh\StackMiddleware\ServiceProvider::class,
 
 ### Usage
 
