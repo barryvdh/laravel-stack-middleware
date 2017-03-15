@@ -1,5 +1,6 @@
 <?php namespace Barryvdh\StackMiddleware;
 
+use ReflectionClass;
 use Illuminate\Contracts\Container\Container;
 use Symfony\Component\HttpKernel\TerminableInterface;
 
@@ -47,7 +48,8 @@ class StackMiddleware
         } else {
             // Add kernel as first parameter
             array_unshift($params, $kernel);
-            $middleware = $this->container->make($callable, $params);
+            $reflect  = new ReflectionClass($callable);
+            $middleware = $reflect->newInstanceArgs($params);
         }
 
         if ($middleware instanceof TerminableInterface) {
