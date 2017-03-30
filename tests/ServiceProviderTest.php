@@ -23,7 +23,7 @@ class ServiceProviderTest extends PHPUnit_Framework_TestCase
     {
         $this->app = $this->getMockBuilder('Illuminate\Contracts\Container\Container')
             ->setMethods([
-                'bind', 'alias', 'tagged', 'tag', 'bindIf', 'bound', 'singleton', 'extend',
+                'bind', 'alias', 'factory', 'tagged', 'tag', 'bindIf', 'bound', 'singleton', 'extend',
                 'instance', 'when', 'make', 'call', 'resolved', 'resolving', 'afterResolving',
             ])->getMock();
         $this->serviceProvider = new ServiceProvider($this->app);
