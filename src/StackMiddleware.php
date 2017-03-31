@@ -45,9 +45,10 @@ class StackMiddleware
         if (is_callable($callable)) {
             $middleware = $callable($kernel);
         } else {
-            // Add kernel as first parameter
-            array_unshift($params, $kernel);
-            $middleware = $this->container->make($callable, $params);
+            // Add kernel as 'app' parameter
+            $params = ['app' => $kernel] + $params;
+            $makeMethod = method_exists($this->container, 'makeWith') ?  'makeWith' : 'make';
+            $middleware = $this->container->$makeMethod($callable, $params);
         }
 
         if ($middleware instanceof TerminableInterface) {

@@ -22,7 +22,11 @@ class StackMiddlewareTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->container = $this->getMock('Illuminate\Contracts\Container\Container');
+        $this->container = $this->getMockBuilder('Illuminate\Contracts\Container\Container')
+            ->setMethods([
+                'bind', 'alias', 'factory', 'tagged', 'tag', 'bindIf', 'bound', 'singleton', 'extend',
+                'instance', 'when', 'make', 'makeWith', 'call', 'resolved', 'resolving', 'afterResolving',
+            ])->getMock();
         $this->stackMiddleware = new StackMiddleware($this->container);
     }
 
@@ -34,13 +38,13 @@ class StackMiddlewareTest extends PHPUnit_Framework_TestCase
         $arg2 = 'arg2';
 
         $this->container->expects($this->once())
-            ->method('make')
+            ->method('makeWith')
             ->with(
                 $this->equalTo($middlewareName),
-                $this->equalTo([new ClosureHttpKernel(), $arg1, $arg2])
+                $this->equalTo(['app' => new ClosureHttpKernel(), 'env' => $arg1, 'envVar' => $arg2])
             )->will($this->returnValue($kernelStub));
 
-        $result = $this->stackMiddleware->wrap($middlewareName, [$arg1, $arg2]);
+        $result = $this->stackMiddleware->wrap($middlewareName, ['env' => $arg1, 'envVar' => $arg2]);
 
         $this->assertNotInstanceOf('Barryvdh\StackMiddleware\TerminableClosureMiddleware', $result);
         $this->assertInstanceOf('Barryvdh\StackMiddleware\ClosureMiddleware', $result);
