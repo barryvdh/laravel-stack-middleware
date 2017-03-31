@@ -24,7 +24,7 @@ The first argument is the new Middleware name. The second is either:
  - The name of the class to resolve with the App container. Parameters can be provided as an array as the third argument. The Kernel is prepended to that array, so it's always injected as first argument.
 
 ```php
-app('stack')->bind('AddRobotsHeaders', 'League\StackRobots\Robots', ['production', 'APP_ENV']);
+app('stack')->bind('AddRobotsHeaders', 'League\StackRobots\Robots', ['env' => 'production', 'envVar' => 'APP_ENV']);
 ```
 
 ```php
