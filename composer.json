@@ -30,6 +30,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Barryvdh\\StackMiddleware\\ServiceProvider"
+            ],
+            "aliases": {
+                "Stack": "Barryvdh\\StackMiddleware\\Facade"
+            }
         }
     }
 }
