@@ -39,5 +39,10 @@
                 "Stack": "Barryvdh\\StackMiddleware\\Facade"
             }
         }
-    }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
