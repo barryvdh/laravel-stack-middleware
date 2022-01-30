@@ -1,6 +1,7 @@
 <?php namespace Barryvdh\StackMiddleware;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class ClosureHttpKernel implements HttpKernelInterface
@@ -23,7 +24,7 @@ class ClosureHttpKernel implements HttpKernelInterface
      *
      * @return Response A Response instance
      */
-    public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
+    public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true): Response
     {
         $closure = $this->closure;
 

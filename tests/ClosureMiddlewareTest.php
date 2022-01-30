@@ -4,7 +4,7 @@ namespace Barryvdh\StackMiddleware\Tests;
 use Barryvdh\StackMiddleware\ClosureMiddleware;
 use PHPUnit_Framework_TestCase;
 
-class ClosureMiddlewareTest extends PHPUnit_Framework_TestCase
+class ClosureMiddlewareTest extends TestCase
 {
     /**
      * @var ClosureMiddleware
@@ -24,7 +24,7 @@ class ClosureMiddlewareTest extends PHPUnit_Framework_TestCase
     /**
      * Set up method.
      */
-    public function setUp()
+    public function setUp():void
     {
         $this->closureKernelMock = $this->getMock('Barryvdh\StackMiddleware\ClosureHttpKernel');
         $this->httpKernelInterface = $this->getMock('Symfony\Component\HttpKernel\HttpKernelInterface');

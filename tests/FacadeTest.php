@@ -4,7 +4,7 @@ namespace Barryvdh\StackMiddleware\Tests;
 use Barryvdh\StackMiddleware\Facade;
 use Barryvdh\StackMiddleware\Tests\Stubs\FakeFacade;
 
-class FacadeTest extends Facade
+class FacadeTest extends TestCase
 {
     public function testFacadeAccessor()
     {

@@ -1,6 +1,8 @@
 <?php
 namespace Barryvdh\StackMiddleware\Tests\Stubs;
 
+use Symfony\Component\HttpFoundation\Response;
+
 class FakeClosure
 {
     public $args;
@@ -9,6 +11,6 @@ class FakeClosure
     public function __invoke()
     {
         $this->args = func_get_args();
-        return $this->returned;
+        return new Response($this->returned);
     }
 }
