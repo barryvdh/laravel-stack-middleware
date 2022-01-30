@@ -6,7 +6,7 @@ use Barryvdh\StackMiddleware\Tests\Stubs\FakeClosure;
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
-class ClosureHttpKernelTest extends PHPUnit_Framework_TestCase
+class ClosureHttpKernelTest extends TestCase
 {
     /**
      * @var ClosureHttpKernel
@@ -16,7 +16,7 @@ class ClosureHttpKernelTest extends PHPUnit_Framework_TestCase
     /**
      * Set up method
      */
-    public function setUp()
+    public function setUp() :void
     {
         $this->kernel = new ClosureHttpKernel();
     }

@@ -5,7 +5,7 @@ use Barryvdh\StackMiddleware\ClosureHttpKernel;
 use Barryvdh\StackMiddleware\StackMiddleware;
 use PHPUnit_Framework_TestCase;
 
-class StackMiddlewareTest extends PHPUnit_Framework_TestCase
+class StackMiddlewareTest extends TestCase
 {
     /**
      * @var PHPUnit_Framework_MockObject_MockObject
@@ -20,13 +20,10 @@ class StackMiddlewareTest extends PHPUnit_Framework_TestCase
     /**
      *
      */
-    public function setUp()
+    public function setUp():void
     {
         $this->container = $this->getMockBuilder('Illuminate\Contracts\Container\Container')
-            ->setMethods([
-                'bind', 'alias', 'factory', 'tagged', 'tag', 'bindIf', 'bound', 'singleton', 'extend',
-                'instance', 'when', 'make', 'makeWith', 'call', 'resolved', 'resolving', 'afterResolving',
-            ])->getMock();
+            ->getMock();
         $this->stackMiddleware = new StackMiddleware($this->container);
     }
 
@@ -38,7 +35,7 @@ class StackMiddlewareTest extends PHPUnit_Framework_TestCase
         $arg2 = 'arg2';
 
         $this->container->expects($this->once())
-            ->method('makeWith')
+            ->method('make')
             ->with(
                 $this->equalTo($middlewareName),
                 $this->equalTo(['app' => new ClosureHttpKernel(), 'env' => $arg1, 'envVar' => $arg2])

@@ -4,7 +4,7 @@ namespace Barryvdh\StackMiddleware\Tests;
 use Barryvdh\StackMiddleware\TerminableClosureMiddleware;
 use PHPUnit_Framework_TestCase;
 
-class TerminableClosureMiddlewareTest extends PHPUnit_Framework_TestCase
+class TerminableClosureMiddlewareTest extends TestCase
 {
     /**
      * @var ClosureMiddleware
@@ -24,7 +24,7 @@ class TerminableClosureMiddlewareTest extends PHPUnit_Framework_TestCase
     /**
      * Set up method.
      */
-    public function setUp()
+    public function setUp():void
     {
         //$reflector = new \ReflectionClass('Symfony\Component\HttpKernel\KernelInterface');
         //$methods = array_map(function (\ReflectionMethod $method) {

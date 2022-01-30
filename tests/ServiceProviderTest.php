@@ -4,11 +4,9 @@ namespace Barryvdh\StackMiddleware\Tests;
 use Barryvdh\StackMiddleware\ServiceProvider;
 use PHPUnit_Framework_TestCase;
 
-class ServiceProviderTest extends PHPUnit_Framework_TestCase
+class ServiceProviderTest extends TestCase
 {
-    /**
-     * @var PHPUnit_Framework_MockObject_MockObject
-     */
+
     protected $app;
 
     /**
@@ -19,13 +17,10 @@ class ServiceProviderTest extends PHPUnit_Framework_TestCase
     /**
      * Set up the test.
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->app = $this->getMockBuilder('Illuminate\Contracts\Container\Container')
-            ->setMethods([
-                'bind', 'alias', 'factory', 'tagged', 'tag', 'bindIf', 'bound', 'singleton', 'extend',
-                'instance', 'when', 'make', 'call', 'resolved', 'resolving', 'afterResolving',
-            ])->getMock();
+            ->getMock();
         $this->serviceProvider = new ServiceProvider($this->app);
     }
 
