@@ -1,4 +1,9 @@
 ## Stack Middleware for Laravel
+[![Tests](https://github.com/barryvdh/laravel-stack-middleware/workflows/Tests/badge.svg)](https://github.com/barryvdh/laravel-stack-middleware/actions)
+[![Packagist License](https://poser.pugx.org/barryvdh/laravel-stack-middleware/license.png)](http://choosealicense.com/licenses/mit/)
+[![Latest Stable Version](https://poser.pugx.org/barryvdh/laravel-stack-middleware/version.png)](https://packagist.org/packages/barryvdh/laravel-stack-middleware)
+[![Total Downloads](https://poser.pugx.org/barryvdh/laravel-stack-middleware/d/total.png)](https://packagist.org/packages/barryvdh/laravel-stack-middleware)
+[![Fruitcake](https://img.shields.io/badge/Powered%20By-Fruitcake-b2bc35.svg)](https://fruitcake.nl/)
 
 Laravel 4 used [HttpKernelInterface Middlewares](http://stackphp.com/middlewares/) for its Middleware, but Laravel 5 uses a new way.
 This package provides a way to wrap StackPHP Middleware so it can be used with Laravel 5
