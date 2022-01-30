@@ -43,6 +43,6 @@ class ClosureHttpKernelTest extends TestCase
         $returned = $this->kernel->handle($request);
 
         $this->assertEquals([$request], $closure->args);
-        $this->assertEquals($closure->returned, $returned);
+        $this->assertEquals($closure->returned, $returned->getContent());
     }
 }
