@@ -33,7 +33,7 @@ class TerminableClosureMiddlewareTest extends TestCase
 
         $this->closureKernelMock = $this->getMock('Barryvdh\StackMiddleware\ClosureHttpKernel');
         $this->httpKernelInterface = $this->getMockBuilder('Symfony\Component\HttpKernel\HttpKernelInterface')
-            ->setMethods(['handle', 'terminate'])->getMock();
+            ->onlyMethods(['handle'])->addMethods(['terminate'])->getMock();
 
         $this->middleware = new TerminableClosureMiddleware($this->closureKernelMock, $this->httpKernelInterface);
     }
