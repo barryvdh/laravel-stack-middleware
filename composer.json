@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
+        "php": "^8",
         "illuminate/support": "^9|^10",
         "symfony/http-kernel": "^6"
     },
