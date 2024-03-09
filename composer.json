@@ -1,6 +1,6 @@
 {
     "name": "barryvdh/laravel-stack-middleware",
-    "description": "Stack Middleware for Laravel 5",
+    "description": "Stack Middleware for Laravel",
     "license": "MIT",
     "keywords": ["laravel", "stack", "stackphp", "middleware"],
     "authors": [
