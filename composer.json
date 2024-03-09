@@ -11,11 +11,11 @@
     ],
     "require": {
         "php": "^8",
-        "illuminate/support": "^9|^10",
-        "symfony/http-kernel": "^6"
+        "illuminate/support": "^9|^10|^11",
+        "symfony/http-kernel": "^6|^7"
     },
     "require-dev": {
-        "orchestra/testbench": "^7|^8"
+        "orchestra/testbench": "^7|^8|^9"
     },
     "autoload": {
         "psr-4": {
